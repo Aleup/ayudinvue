@@ -1,21 +1,16 @@
 <template>
   <div class="container">
     <b-card class="text-center">
-      <b-form-group label="AyudinNodeJs">
-        <b-form-radio
+      <b-form-group label="Radio Buttons">
+        <b-form-radio-group
+          id="btn-radios-1"
           v-model="selected"
-          name="some-radios"
-          @change="callAbout"
-          value="error"
-          >Call About</b-form-radio
-        >
-        <b-form-radio
-          v-model="selected"
-          name="some-radios"
-          @change="callAbout"
-          value="about"
-          >Call Error</b-form-radio
-        >
+          :options="options"
+          buttons
+          @change="onChangeRadioForm"
+          button-variant="outline-primary"
+          name="radios-btn-default"
+        ></b-form-radio-group>
       </b-form-group>
       <b-alert class="align-left" variant="success" :show="showAlert">
         <span v-html="response" />
@@ -35,6 +30,10 @@ export default {
   data() {
     return {
       selected: "error",
+      options: [
+        { text: "Call Abount", value: "about" },
+        { text: "Call Error", value: "error" }
+      ],
       response: ""
     };
   },
@@ -44,15 +43,15 @@ export default {
     }
   },
   methods: {
-    callAbout() {
+    onChangeRadioForm(value) {
+      this.selected = value;
+      this.response = process.env.VUE_APP_MSG_WAITING;
+      this.showForm = false;
       console.log(process.env.VUE_APP_BASE_URL + this.selected);
       axios
         .get(process.env.VUE_APP_BASE_URL + this.selected, {
           headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers":
-              "Origin, X-Requested-With, Content-Type, Accept"
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           data: null
         })

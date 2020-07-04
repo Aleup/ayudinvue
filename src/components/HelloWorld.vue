@@ -8,8 +8,11 @@
           <b-tab title="Inputs" active>
             <InputTab />
           </b-tab>
-          <b-tab title="RadioButtons" active>
+          <b-tab title="RadioButtons-CORS">
             <RadioButtonParty />
+          </b-tab>
+          <b-tab title="SQL">
+            <RadioButtonSQL />
           </b-tab>
         </b-tabs>
       </b-container>
@@ -48,6 +51,7 @@
 <script>
 import InputTab from "./InputTab.vue";
 import RadioButtonParty from "./RadioButtonParty.vue";
+import RadioButtonSQL from "./RadioButtonSQL.vue";
 
 export default {
   name: "HelloWorld",
@@ -56,7 +60,8 @@ export default {
   },
   components: {
     InputTab,
-    RadioButtonParty
+    RadioButtonParty,
+    RadioButtonSQL
   }
 };
 </script>

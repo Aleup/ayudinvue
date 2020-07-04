@@ -9,6 +9,8 @@ Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 
 Vue.config.productionTip = false;
+Vue.prototype.FORM_UPDATE = 'FORM_UPDATE';
+Vue.prototype.FORM_INSERT = 'FORM_INSERT';
 
 new Vue({
   render: function(h) {
